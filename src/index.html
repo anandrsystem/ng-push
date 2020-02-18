@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push Notifications: Node.js and Web Push</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-app="app" ng-controller="PushController">
+    <header>
+        <h1>Web Push Notifications Demo</h1>
+    </header>
+    <div class="content">
+        <h2>Welcome {{helloTo.title}},</h2>
+        <div class="buttons">
+            <button class="trigger-push" ng-click="triggerPush()">Trigger Push Notification</button>
+        </div>
+    </div>
+    <!-- <div>
+        <h2 ng-click="registerServiceWorker()">Welcome {{helloTo.title}} to the world!!</h2>
+        <p>
+            <button ng-click="notifyMe()">Click Here</button>
+        </p>
+    </div> -->
+</body>
+
+</html>
