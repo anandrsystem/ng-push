@@ -27,6 +27,10 @@ html {
     padding: 0px 15px;
   }
 
+  .message {
+    height: 36px;
+  }
+
   .buttons {
     text-align: center;
   }

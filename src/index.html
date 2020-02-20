@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -16,16 +16,12 @@
     </header>
     <div class="content">
         <h2>Welcome {{helloTo.title}},</h2>
-        <div class="buttons">
-            <button class="trigger-push" ng-click="triggerPush()">Trigger Push Notification</button>
+        <div>
+            <label>Type your message: </label>
+            <input class="message" type="text" value="{{push.message}}" ng-model="push.message"></input>
+            <button class="trigger-push" ng-click="pushHandler()">Trigger Push Notification</button>
         </div>
     </div>
-    <!-- <div>
-        <h2 ng-click="registerServiceWorker()">Welcome {{helloTo.title}} to the world!!</h2>
-        <p>
-            <button ng-click="notifyMe()">Click Here</button>
-        </p>
-    </div> -->
 </body>
 
 </html>

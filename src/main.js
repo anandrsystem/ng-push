@@ -1,27 +1,30 @@
 angular.module("app", []).controller("PushController", function ($scope) {
   $scope.helloTo = {};
   $scope.helloTo.title = "Anand";
+  $scope.push = {};
+  $scope.push.message = "";
 
-  const publicVapidKey = 'BFWvnvGkPJgb96RkRk2axu9X5vtTA5oIaUBneAAu2Y8MPHRuVeSlK49qDPadlAjY2Nxa_GynjRt7LwuwJNi6Fys';
-  // const triggerPush = document.querySelector('.trigger-push');
-  // triggerPush.addEventListener('click', () => {
-  //   triggerPushNotification().catch(error => console.error(error));
-  // });
+  $scope.pushHandler = function () {
+    setInterval(function () {
+      triggerPush();
+    }, 5000);
+  }
 
-  $scope.triggerPush = async function () {
+  async function triggerPush() {
     if ('serviceWorker' in navigator) {
       const register = await navigator.serviceWorker.register('/sw.js', {
         scope: '/'
       });
 
+      const applicationServerPublicKey = 'BFWvnvGkPJgb96RkRk2axu9X5vtTA5oIaUBneAAu2Y8MPHRuVeSlK49qDPadlAjY2Nxa_GynjRt7LwuwJNi6Fys';
       const subscription = await register.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
+        applicationServerKey: urlBase64ToUint8Array(applicationServerPublicKey),
       });
       const data = {
         subscription: subscription,
-        title: 'Title: Push notifications with Service Workers',
-        message: 'Message: Yay it works.',
+        title: 'Push notifications with Service Workers',
+        message: $scope.push.message
       }
 
       await fetch('/subscribe', {
